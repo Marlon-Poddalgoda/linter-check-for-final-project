@@ -6,6 +6,7 @@
 
 # import arcade class
 import arcade
+
 # import game class from game file
 from game import longWayGame
 
