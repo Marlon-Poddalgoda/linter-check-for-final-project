@@ -72,31 +72,32 @@ class longWayGame(arcade.Window):
         # add Tiled map
         my_level_one = ":resources:Assets/platformer.tmx"
         # layer name
-        platform_name = 'Platform'
+        platform_name = "Platform"
         # layer name
-        coin_name = 'coins'
+        coin_name = "coins"
         # layer name
-        lava_name = 'lava'
+        lava_name = "lava"
 
         # read tiled map
         level_one = arcade.tilemap.read_tmx(my_level_one)
 
         # set platforms
-        self.wall_list = arcade.tilemap.process_layer(map_object=
-                                                      level_one,
-                                                      layer_name=
-                                                      platform_name,
-                                                      scaling=
-                                                      constants.TILE_SCALING,
-                                                      use_spatial_hash=True)
+        self.wall_list = arcade.tilemap.process_layer(
+            map_object=level_one,
+            layer_name=platform_name,
+            scaling=constants.TILE_SCALING,
+            use_spatial_hash=True
+        )
 
         # set coins
-        self.coin_list = arcade.tilemap.process_layer(level_one, coin_name,
-                                                      constants.TILE_SCALING)
+        self.coin_list = arcade.tilemap.process_layer(
+            level_one, coin_name, constants.TILE_SCALING
+        )
 
         # set lava
-        self.lava_list = arcade.tilemap.process_layer(level_one, lava_name,
-                                                      constants.TILE_SCALING)
+        self.lava_list = arcade.tilemap.process_layer(
+            level_one, lava_name, constants.TILE_SCALING
+        )
 
         # set sign sprite
         sign_source = ":resources:assets/sign.png"
@@ -106,9 +107,9 @@ class longWayGame(arcade.Window):
         self.sign_list.append(self.sign_sprite)
 
         # use arcade class physics engine to simulate gravity and physics
-        self.physics_eng = arcade.PhysicsEnginePlatformer(self.player_sprite,
-                                                          self.wall_list,
-                                                          constants.GRAVITY)
+        self.physics_eng = arcade.PhysicsEnginePlatformer(
+            self.player_sprite, self.wall_list, constants.GRAVITY
+        )
 
     def on_draw(self):
         # render screen
@@ -155,7 +156,9 @@ class longWayGame(arcade.Window):
         self.physics_eng.update()
 
         # coin collision check
-        coin_hit_list = arcade.check_for_collision_with_list(self.player_sprite, self.coin_list)
+        coin_hit_list = arcade.check_for_collision_with_list(
+            self.player_sprite, self.coin_list
+        )
 
         # loop for coin removal
         for coin in coin_hit_list:
