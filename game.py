@@ -6,6 +6,7 @@
 
 # import statements
 import arcade
+
 # import constants
 import constants
 
