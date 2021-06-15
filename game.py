@@ -5,9 +5,9 @@
 # This is the game class file for "The Long Way Home"
 
 # import statements
-import constants
-
 import arcade
+# import constants
+import constants
 
 
 class longWayGame(arcade.Window):
